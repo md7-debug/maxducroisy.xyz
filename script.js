@@ -282,7 +282,7 @@
         {
           title: 'French and English',
           meta: 'Languages',
-          description: 'I work, read and speak fluently in both French and English.',
+          description: 'I work, read and speak in both languages.',
         },
       ],
     },
