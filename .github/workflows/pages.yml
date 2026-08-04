@@ -23,8 +23,9 @@ jobs:
         env:
           SITE_URL: https://maxducroisy.xyz
         run: |
-          python -m py_compile build.py
+          python -m py_compile build.py scripts/validate_content.py
           python -m json.tool content.json >/dev/null
+          python scripts/validate_content.py
           node --check script.js
           node --check thinking-orbs.js
           python build.py

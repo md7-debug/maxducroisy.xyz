@@ -19,6 +19,12 @@ Each entry may use:
 
 The top-level modes and Browse filters update automatically when a new kind appears.
 
+Validate catalogue fields and local note metadata before publishing:
+
+```sh
+python3 scripts/validate_content.py
+```
+
 ## Generate text editions
 
 ```sh
