@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maxducroisy.xyz/sitemap.xml

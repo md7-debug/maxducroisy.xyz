@@ -3,8 +3,8 @@
 
 from __future__ import annotations
 
-import os
 import json
+import os
 import re
 from datetime import datetime, timezone
 from html import escape
@@ -73,6 +73,15 @@ def rss_date(value: str) -> str:
     return parsed.strftime("%a, %d %b %Y 00:00:00 +0000")
 
 
+def latest_rss_date(entries: list[dict[str, str]]) -> str:
+    exact_dates = [
+        entry["date"]
+        for entry in entries
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", entry.get("date", ""))
+    ]
+    return rss_date(max(exact_dates)) if exact_dates else ""
+
+
 def catalogue_text(entries: list[dict[str, str]]) -> str:
     if not entries:
         return ""
@@ -134,13 +143,14 @@ def main() -> None:
     )
     (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
 
-    now = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
     items = []
     feed_entries = [
         entry
         for entry in entries
         if entry.get("kind") in {"writing", "video", "note"} and entry.get("href")
     ]
+    last_build_date = latest_rss_date(feed_entries)
+    last_build_markup = f"<lastBuildDate>{last_build_date}</lastBuildDate>" if last_build_date else ""
     for entry in sorted(feed_entries, key=lambda item: item.get("date", ""), reverse=True):
         url = absolute_url(entry["href"])
         published = ""
@@ -162,7 +172,7 @@ def main() -> None:
         '<title>Max Ducroisy</title>'
         f'<link>{escape(SITE_URL)}/</link>'
         '<description>Work and projects from Max Ducroisy.</description>'
-        f'<lastBuildDate>{now}</lastBuildDate>'
+        f'{last_build_markup}'
         + "".join(items)
         + "</channel></rss>\n"
     )

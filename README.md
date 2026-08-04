@@ -38,6 +38,8 @@ This creates:
 - `llms.txt`
 - `index.txt`
 
+The feed build date is derived from the latest dated feed entry, so repeated builds produce identical output.
+
 ## Local preview
 
 ```sh
