@@ -1,4 +1,4 @@
-# Max Ducroisy personal site
+# maxducroisy.xyz
 
 A small static personal site built with plain HTML, CSS and JavaScript. There is no framework or server-side application.
 
