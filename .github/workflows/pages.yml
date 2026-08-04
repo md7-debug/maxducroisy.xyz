@@ -1,0 +1,58 @@
+name: Validate and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Check and build editions
+        env:
+          SITE_URL: https://maxducroisy.xyz
+        run: |
+          python -m py_compile build.py
+          python -m json.tool content.json >/dev/null
+          node --check script.js
+          node --check thinking-orbs.js
+          python build.py
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Build public directory
+        env:
+          SITE_URL: https://maxducroisy.xyz
+        run: |
+          python build.py
+          mkdir -p dist/assets dist/notes
+          cp index.html 404.html styles.css script.js thinking-orbs.js content.json feed.xml llms.txt index.txt dist/
+          cp assets/favicon.svg assets/social-card.png dist/assets/
+          cp notes/*.html dist/notes/
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=maxducroisy --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

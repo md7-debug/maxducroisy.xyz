@@ -1,0 +1,63 @@
+# Max Ducroisy
+
+Personal site for Max Ducroisy.
+
+Canonical site: https://maxducroisy.xyz/
+Plain-text edition: https://maxducroisy.xyz/index.txt
+RSS feed: https://maxducroisy.xyz/feed.xml
+
+## Page content
+
+Projects Writing Video Notes
+
+Hi, I’m Max.
+
+I live in London and work on bringing AI agents to procurement at TraDuotech.
+
+My background is in industrial engineering, procurement, supply chain, product design and implementation.
+
+I care about making AI agents useful in real work, with people staying in control.
+
+People staying in control
+
+ThryveLoop Project
+
+A private decision practice for difficult or uncertain moments.
+
+Cura Reader Open source
+
+A quiet bilingual reading practice for philosophy, kept locally.
+
+Interest
+
+How capable agents can remain useful while people retain context and control. Browse all 06
+
+Browse
+
+2026-07-17 · Writing · Ethics & compliance
+Ethics & Compliance: Embed Controls Into Procurement and Third-Party Workflows
+https://www.traduotech.com/insights/ethics-compliance-procurement-tprm
+
+2026-07-17 · Writing · AI & procurement
+AI in Procurement: A Practical Playbook for Value and Control
+https://www.traduotech.com/insights/ai-in-procurement-practical-playbook
+
+2026-07-17 · Writing · Procure-to-pay
+Procure-to-Pay: Stabilise Controls, Cut Exceptions, Then Automate
+https://www.traduotech.com/insights/procure-to-pay-stabilisation-controls-automation
+
+2026-07-17 · Writing · Intake-to-procure
+Intake-to-Procure: Orchestration That Makes Transformation Stick
+https://www.traduotech.com/insights/intake-to-procure-orchestration
+
+2026-08-04 · Note · AI & practice
+What I Mean by Useful
+notes/what-i-mean-by-useful.html
+
+2026 · Project · Decision practice
+ThryveLoop
+https://thryveloop.com
+
+2026 · Open source · Reading
+Cura Reader
+https://curareader.vercel.app

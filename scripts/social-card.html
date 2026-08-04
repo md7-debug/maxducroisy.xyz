@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+    body {
+      position: relative;
+      background: #f3f1ec url("../assets/social-card-background.png") center / cover no-repeat;
+      color: #f1eee8;
+      font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .copy {
+      position: absolute;
+      top: 96px;
+      left: 88px;
+      width: 520px;
+    }
+    .name {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 96px;
+      font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .name::after {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e06d54;
+      box-shadow: 0 0 16px rgba(224, 109, 84, 0.6);
+      content: "";
+    }
+    h1 {
+      max-width: 500px;
+      margin: 0;
+      font-size: 66px;
+      font-weight: 470;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+    .meta {
+      position: absolute;
+      bottom: 90px;
+      left: 88px;
+      margin: 0;
+      color: #b9b7b1;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+    .meta span { color: #e06d54; padding-inline: 10px; }
+  </style>
+</head>
+<body>
+  <div class="copy">
+    <p class="name">Max Ducroisy</p>
+    <h1>Work, projects<br>and notes.</h1>
+  </div>
+  <p class="meta">London <span>·</span> maxducroisy.xyz</p>
+</body>
+</html>

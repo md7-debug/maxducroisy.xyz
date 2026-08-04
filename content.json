@@ -1,0 +1,96 @@
+{
+  "entries": [
+    {
+      "id": "ethics-compliance-procurement-tprm",
+      "kind": "writing",
+      "type": "Writing",
+      "date": "2026-07-17",
+      "dateKind": "updated",
+      "classification": "Ethics & compliance",
+      "source": "TraDuotech",
+      "readingTime": "9 min",
+      "title": "Ethics & Compliance: Embed Controls Into Procurement and Third-Party Workflows",
+      "description": "How to put ethics and compliance into procurement and third-party workflows, with controls teams can test and measure.",
+      "href": "https://www.traduotech.com/insights/ethics-compliance-procurement-tprm",
+      "link": "Read article"
+    },
+    {
+      "id": "ai-in-procurement-practical-playbook",
+      "kind": "writing",
+      "type": "Writing",
+      "date": "2026-07-17",
+      "dateKind": "updated",
+      "classification": "AI & procurement",
+      "source": "TraDuotech",
+      "readingTime": "11 min",
+      "title": "AI in Procurement: A Practical Playbook for Value and Control",
+      "description": "How to set boundaries, choose useful workflows and move beyond pilots without losing human oversight.",
+      "href": "https://www.traduotech.com/insights/ai-in-procurement-practical-playbook",
+      "link": "Read article"
+    },
+    {
+      "id": "procure-to-pay-stabilisation-controls-automation",
+      "kind": "writing",
+      "type": "Writing",
+      "date": "2026-07-17",
+      "dateKind": "updated",
+      "classification": "Procure-to-pay",
+      "source": "TraDuotech",
+      "readingTime": "10 min",
+      "title": "Procure-to-Pay: Stabilise Controls, Cut Exceptions, Then Automate",
+      "description": "Treat invoice exceptions as signals, remove root causes and automate only after controls are clear.",
+      "href": "https://www.traduotech.com/insights/procure-to-pay-stabilisation-controls-automation",
+      "link": "Read article"
+    },
+    {
+      "id": "intake-to-procure-orchestration",
+      "kind": "writing",
+      "type": "Writing",
+      "date": "2026-07-17",
+      "dateKind": "updated",
+      "classification": "Intake-to-procure",
+      "source": "TraDuotech",
+      "readingTime": "10 min",
+      "title": "Intake-to-Procure: Orchestration That Makes Transformation Stick",
+      "description": "How one intake point can cut handoffs and keep a clean evidence trail without slowing the business.",
+      "href": "https://www.traduotech.com/insights/intake-to-procure-orchestration",
+      "link": "Read article"
+    },
+    {
+      "id": "what-i-mean-by-useful",
+      "kind": "note",
+      "type": "Note",
+      "date": "2026-08-04",
+      "dateKind": "published",
+      "classification": "AI & practice",
+      "source": "Max Ducroisy",
+      "readingTime": "2 min",
+      "title": "What I Mean by Useful",
+      "description": "A small test for AI agents: do they make real work clearer, easier to review and easier to move forward?",
+      "href": "notes/what-i-mean-by-useful.html",
+      "link": "Read note"
+    },
+    {
+      "id": "thryveloop",
+      "kind": "project",
+      "type": "Project",
+      "date": "2026",
+      "classification": "Decision practice",
+      "title": "ThryveLoop",
+      "description": "A private decision practice for difficult or uncertain moments.",
+      "href": "https://thryveloop.com",
+      "link": "Visit project"
+    },
+    {
+      "id": "cura-reader",
+      "kind": "project",
+      "type": "Open source",
+      "date": "2026",
+      "classification": "Reading",
+      "title": "Cura Reader",
+      "description": "A quiet bilingual reading practice for philosophy, kept locally.",
+      "href": "https://curareader.vercel.app",
+      "link": "Open project"
+    }
+  ]
+}

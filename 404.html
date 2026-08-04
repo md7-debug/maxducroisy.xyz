@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f3f1ec">
+  <script>try{const ambient=localStorage.getItem('max-ambient');if(ambient)document.documentElement.dataset.ambient=ambient}catch{}</script>
+  <title>Not found — Max Ducroisy</title>
+  <link id="site-favicon" rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="error-page">
+  <header class="site-header" id="top">
+    <a class="wordmark" href="/" aria-label="Max Ducroisy, home">Max Ducroisy</a>
+    <nav class="utility-nav" aria-label="Contact and appearance">
+      <a href="mailto:max.ducroisy@traduotech.com">Email</a>
+      <span class="utility-separator" aria-hidden="true"></span>
+      <button class="ambient-toggle" type="button" aria-pressed="false" aria-label="Switch to night theme">
+        <span class="ambient-orbit" aria-hidden="true"><span class="ambient-bead"></span></span>
+        <span class="ambient-text" aria-hidden="true">Night</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="error-main">
+    <section class="error-space" aria-labelledby="error-title">
+      <div class="error-orb" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="error-code">404</p>
+      <div class="error-copy">
+        <p>Lost thread</p>
+        <h1 id="error-title">This path does not lead anywhere.</h1>
+        <p>The page may have moved, or the address may be incomplete.</p>
+        <a href="/">Return to the personal space <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="error-path" aria-hidden="true"><span></span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-editions" aria-label="Other editions">
+      <a href="/feed.xml">RSS</a><span aria-hidden="true">·</span>
+      <a href="/index.txt">Text</a><span aria-hidden="true">·</span>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </footer>
+</body>
+</html>
