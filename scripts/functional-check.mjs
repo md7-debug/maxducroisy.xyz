@@ -23,11 +23,16 @@ await page.waitForURL(url => !url.searchParams.has('browse'));
 
 await page.goto('http://127.0.0.1:4173/?view=notes#top', { waitUntil: 'networkidle' });
 await page.getByRole('tab', { name: 'Notes', selected: true }).waitFor();
-await page.getByRole('link', { name: 'What I Mean by Useful' }).waitFor();
+const noteLink = page.getByRole('link', { name: 'What I Mean by Useful' });
+await noteLink.waitFor();
+if (await noteLink.getAttribute('href') !== 'notes/what-i-mean-by-useful') {
+  throw new Error('Personal note does not use its clean public URL');
+}
 
 await page.goto('http://127.0.0.1:4173/?browse=note#top', { waitUntil: 'networkidle' });
 await page.getByRole('dialog').waitFor();
 await page.getByRole('link', { name: 'What I Mean by Useful' }).waitFor();
+await page.getByRole('heading', { name: 'Archive', exact: true }).waitFor();
 
 await page.goto('http://127.0.0.1:4173/notes/what-i-mean-by-useful.html', { waitUntil: 'networkidle' });
 await page.getByRole('heading', { name: 'What I mean by useful' }).waitFor();

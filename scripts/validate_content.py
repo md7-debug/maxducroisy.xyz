@@ -44,8 +44,16 @@ def local_path(href: str) -> Path | None:
     return path
 
 
+def source_path(href: str) -> Path | None:
+    path = local_path(href)
+    if path is None or path.is_file() or path.suffix:
+        return path
+    html_path = path.with_suffix(".html")
+    return html_path if html_path.is_file() else path
+
+
 def validate_note(entry: dict[str, str], errors: list[str]) -> None:
-    path = local_path(entry["href"])
+    path = source_path(entry["href"])
     if path is None:
         fail(errors, f"{entry['id']}: notes must use a local href")
         return
@@ -146,7 +154,7 @@ def main() -> int:
             fail(errors, f"{label}: duplicate href")
         seen_hrefs.add(href)
 
-        path = local_path(href)
+        path = source_path(href)
         if not href_parts.scheme and path is None:
             fail(errors, f"{label}: local href must stay inside the repository")
         if path is not None and not path.is_file():

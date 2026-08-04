@@ -34,6 +34,7 @@ SITE_URL=https://maxducroisy.xyz python3 build.py
 This creates:
 
 - `feed.xml`
+- `sitemap.xml`
 - `llms.txt`
 - `index.txt`
 

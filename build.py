@@ -91,6 +91,11 @@ def catalogue_text(entries: list[dict[str, str]]) -> str:
     return "\n\n".join(lines) + "\n"
 
 
+def sitemap_url(url: str, last_modified: str = "") -> str:
+    modified = f"<lastmod>{escape(last_modified)}</lastmod>" if last_modified else ""
+    return f"<url><loc>{escape(url)}</loc>{modified}</url>"
+
+
 def main() -> None:
     parser = PageParser()
     parser.feed((ROOT / "index.html").read_text(encoding="utf-8"))
@@ -109,6 +114,25 @@ def main() -> None:
         + page_text,
         encoding="utf-8",
     )
+
+    exact_dates = sorted(
+        entry["date"]
+        for entry in entries
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", entry.get("date", ""))
+    )
+    sitemap_items = [sitemap_url(f"{SITE_URL}/", exact_dates[-1] if exact_dates else "")]
+    sitemap_items.extend(
+        sitemap_url(absolute_url(entry["href"]), entry.get("date", "") if len(entry.get("date", "")) == 10 else "")
+        for entry in entries
+        if entry.get("href") and not entry["href"].startswith(("http://", "https://"))
+    )
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        + "".join(sitemap_items)
+        + "</urlset>\n"
+    )
+    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
 
     now = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
     items = []

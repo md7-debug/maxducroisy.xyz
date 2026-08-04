@@ -29,6 +29,7 @@ jobs:
           node --check script.js
           node --check thinking-orbs.js
           python build.py
+          python -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml')"
 
   deploy:
     if: github.event_name == 'push'
@@ -47,7 +48,7 @@ jobs:
         run: |
           python build.py
           mkdir -p dist/assets dist/notes
-          cp index.html 404.html styles.css script.js thinking-orbs.js content.json feed.xml llms.txt index.txt dist/
+          cp index.html 404.html styles.css script.js thinking-orbs.js content.json feed.xml sitemap.xml llms.txt index.txt dist/
           cp assets/favicon.svg assets/social-card.png dist/assets/
           cp notes/*.html dist/notes/
       - name: Deploy to Cloudflare Pages
