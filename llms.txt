@@ -38,8 +38,8 @@ Browse
 Ethics & Compliance: Embed Controls Into Procurement and Third-Party Workflows
 https://www.traduotech.com/insights/ethics-compliance-procurement-tprm
 
-2026-07-17 · Writing · AI & procurement
-AI in Procurement: A Practical Playbook for Value and Control
+2026-09-07 · Writing · AI & procurement
+Procurement AI Agents: Where to Deploy Them, What to Control, and How to Prove Value
 https://www.traduotech.com/insights/ai-in-procurement-practical-playbook
 
 2026-07-17 · Writing · Procure-to-pay
