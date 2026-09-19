@@ -16,6 +16,14 @@ if (await page.getByRole('link', { name: 'Book a conversation', exact: true }).g
 await page.getByRole('tab', { name: 'Writing' }).click();
 await page.waitForURL(url => url.searchParams.get('view') === 'writing');
 await page.goBack();
+await page.getByRole('tab', { name: 'Video' }).click();
+await page.waitForURL(url => url.searchParams.get('view') === 'video');
+const demoLink = page.getByRole('link', { name: 'ThryveLoop in 37 seconds' });
+await demoLink.waitFor();
+if (await demoLink.getAttribute('href') !== 'https://thryveloop.com/#demo') {
+  throw new Error('ThryveLoop demo does not use its public video URL');
+}
+await page.goBack();
 await page.getByRole('button', { name: 'procurement', exact: true }).click();
 await page.waitForURL(url => url.searchParams.get('thread') === 'procurement');
 await page.getByText('I am building a system for agents to work across procurement documents and tools.').waitFor();

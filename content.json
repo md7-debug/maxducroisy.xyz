@@ -71,6 +71,19 @@
       "link": "Read note"
     },
     {
+      "id": "thryveloop-demo",
+      "kind": "video",
+      "type": "Video",
+      "date": "2026",
+      "classification": "Product demo",
+      "source": "ThryveLoop",
+      "readingTime": "37 sec",
+      "title": "ThryveLoop in 37 seconds",
+      "description": "See a difficult question become a small real-life experiment, with AI support kept under your control.",
+      "href": "https://thryveloop.com/#demo",
+      "link": "Watch demo"
+    },
+    {
       "id": "procurement-ai-in-progress",
       "kind": "project",
       "type": "In progress",
