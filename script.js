@@ -357,6 +357,8 @@
         description: entry.description,
         href: entry.href,
         link: entry.link,
+        videoSrc: entry.videoSrc,
+        previewImage: entry.previewImage,
       }));
   }
 
@@ -407,6 +409,7 @@
     },
     video: {
       label: 'Video',
+      variant: 'video',
       archiveKind: videoItems.length ? 'video' : null,
       items: videoItems.length ? videoItems : fallbackVideo,
     },
@@ -438,7 +441,7 @@
 
   function fragmentMarkup(item, index) {
     const meta = item.meta ? `<span>${item.meta}</span>` : '';
-    const isActionLink = item.link === 'Request a demo' || item.link === 'Find a time';
+    const isActionLink = ['Request a demo', 'Find a time', 'Watch demo'].includes(item.link);
     const title = item.thread
       ? `<button class="fragment-trigger" type="button" data-fragment-thread="${item.thread}">${item.title}</button>`
       : item.href && !isActionLink
@@ -447,10 +450,17 @@
     const link = item.href && isActionLink
       ? `<a class="thread-link" href="${item.href}">${item.link} ${iconMarkup}</a>`
       : '';
+    const preview = item.videoSrc
+      ? `<video class="video-preview" controls playsinline preload="metadata" poster="${escapeHTML(item.previewImage)}" aria-label="${escapeHTML(item.title)} video preview">
+          <source src="${escapeHTML(item.videoSrc)}" type="video/mp4">
+          <a href="${escapeHTML(item.href)}">${escapeHTML(item.link)}</a>
+        </video>`
+      : '';
 
     return `
-      <article class="thread-item">
+      <article class="thread-item${preview ? ' has-video-preview' : ''}">
         <span class="orb-slot" data-orb-slot="thread-${index}" aria-hidden="true"></span>
+        ${preview}
         <p class="thread-meta">${title} ${meta}</p>
         <p class="thread-description">${item.description}</p>
         ${link}
@@ -843,7 +853,7 @@
       const trigger = hoverTrigger
         || document.querySelector('.thread-trigger.is-active')
         || document.querySelector('.mode-button.is-active');
-      if (trigger && !(compactOrbs && trigger.classList.contains('mode-button'))) {
+      if (trigger && !trigger.classList.contains('mode-button')) {
         const activeOffset = compactOrbs ? 20 : 32;
         const activePosition = toCanvasPosition(trigger.getBoundingClientRect(), trigger.offsetWidth / 2 + activeOffset);
         field.setTarget('active', activePosition.x, activePosition.y);

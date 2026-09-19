@@ -431,8 +431,8 @@ html[data-ambient="night"] .personal-space {
   bottom: 1.8rem;
   left: 5rem;
   z-index: 4;
-  min-height: 17.2rem;
-  padding: 4.2rem 3.9rem 1.4rem;
+  min-height: 19.5rem;
+  padding: 4.2rem 3.9rem 5.25rem;
   border: 1px solid var(--accent);
   border-radius: 3.5rem 3.5rem 3.5rem 3.2rem;
 }
@@ -487,6 +487,65 @@ html[data-ambient="night"] .personal-space {
 .thread-grid[data-variant="writing"] .thread-description {
   font-size: 0.78rem;
   line-height: 1.42;
+}
+
+.thread-grid[data-variant="video"] {
+  grid-template-columns: 1fr;
+}
+
+.thread-grid[data-variant="video"] .thread-item {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-areas:
+    "preview meta"
+    "preview description"
+    "preview link";
+  grid-template-columns: minmax(15rem, 23rem) minmax(0, 1fr);
+  align-content: center;
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 52rem;
+}
+
+.thread-grid[data-variant="video"] .thread-item > .orb-slot {
+  display: none;
+}
+
+.thread-grid[data-variant="video"] .thread-meta {
+  grid-area: meta;
+  align-self: end;
+}
+
+.thread-grid[data-variant="video"] .thread-description {
+  grid-area: description;
+  max-width: 24rem;
+}
+
+.thread-grid[data-variant="video"] .thread-link {
+  grid-area: link;
+  align-self: start;
+  width: max-content;
+  margin-top: 0.9rem;
+  padding-bottom: 0.16rem;
+  border-bottom: 1px solid var(--accent);
+  color: var(--ink);
+  font-size: 0.72rem;
+}
+
+.video-preview {
+  grid-area: preview;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: #0f1110;
+  box-shadow: 0 0.9rem 2.25rem rgb(0 0 0 / 24%);
+  object-fit: cover;
+}
+
+.video-preview:hover {
+  border-color: var(--accent);
 }
 
 .thread-grid.is-changing {
@@ -1531,6 +1590,21 @@ html[data-ambient="night"] .personal-space {
 
   .thread-grid[data-variant="writing"] {
     gap: 1.8rem;
+  }
+
+  .thread-grid[data-variant="video"] .thread-item {
+    grid-template-areas:
+      "preview"
+      "meta"
+      "description"
+      "link";
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    padding-left: 0;
+  }
+
+  .thread-grid[data-variant="video"] .thread-meta {
+    margin-top: 1.1rem;
   }
 
   .thread-item {

@@ -18,7 +18,15 @@ await page.waitForURL(url => url.searchParams.get('view') === 'writing');
 await page.goBack();
 await page.getByRole('tab', { name: 'Video' }).click();
 await page.waitForURL(url => url.searchParams.get('view') === 'video');
-const demoLink = page.getByRole('link', { name: 'ThryveLoop in 37 seconds' });
+const demoVideo = page.getByLabel('ThryveLoop in 37 seconds video preview');
+await demoVideo.waitFor();
+if (!(await demoVideo.getAttribute('poster'))?.endsWith('/thryveloop-demo-v10.jpg')) {
+  throw new Error('ThryveLoop video preview is missing its poster');
+}
+if (!(await demoVideo.locator('source').getAttribute('src'))?.endsWith('/thryveloop-demo-v10.mp4')) {
+  throw new Error('ThryveLoop video preview is missing its video source');
+}
+const demoLink = page.getByRole('link', { name: /Watch demo/ });
 await demoLink.waitFor();
 if (await demoLink.getAttribute('href') !== 'https://thryveloop.com/#demo') {
   throw new Error('ThryveLoop demo does not use its public video URL');
@@ -30,6 +38,26 @@ await page.getByText('I am building a system for agents to work across procureme
 if (await page.getByRole('link', { name: /Request a demo/ }).getAttribute('href') !== procurementContactUrl) {
   throw new Error('Procurement demo link does not use the TraDuotech contact route');
 }
+
+for (const viewport of [
+  { width: 1440, height: 900 },
+  { width: 1280, height: 800 },
+  { width: 1024, height: 768 },
+  { width: 768, height: 800 },
+  { width: 390, height: 844 },
+]) {
+  await page.setViewportSize(viewport);
+  await page.waitForTimeout(50);
+  const spacing = await page.evaluate(() => {
+    const link = document.querySelector('.thread-item:nth-child(3) .thread-link')?.getBoundingClientRect();
+    const navigator = document.querySelector('.thread-navigator')?.getBoundingClientRect();
+    return link && navigator ? navigator.top - link.bottom : null;
+  });
+  if (spacing === null || spacing < 12) {
+    throw new Error(`Procurement demo link is too close to navigation at ${viewport.width}px (${spacing}px)`);
+  }
+}
+await page.setViewportSize({ width: 1280, height: 900 });
 
 await page.getByRole('button', { name: 'Browse all', exact: true }).click();
 await page.waitForURL(url => url.searchParams.get('browse') === 'all');

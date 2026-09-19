@@ -26,6 +26,7 @@ COMMON_FIELDS = {
     "link",
 }
 PUBLISHED_FIELDS = {"source", "readingTime"}
+VIDEO_FIELDS = {"videoSrc", "previewImage"}
 DATE_PATTERN = re.compile(r"(?:\d{4}|\d{4}-\d{2}-\d{2})\Z")
 ID_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 
@@ -105,6 +106,8 @@ def main() -> int:
         missing = sorted(COMMON_FIELDS - entry.keys())
         if entry.get("kind") in {"writing", "video", "note"}:
             missing.extend(sorted(PUBLISHED_FIELDS - entry.keys()))
+        if entry.get("kind") == "video":
+            missing.extend(sorted(VIDEO_FIELDS - entry.keys()))
         if missing:
             fail(errors, f"{label}: missing fields: {', '.join(missing)}")
             continue
