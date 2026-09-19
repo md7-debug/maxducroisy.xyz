@@ -14,7 +14,7 @@ await page.waitForURL(url => url.searchParams.get('view') === 'writing');
 await page.goBack();
 await page.getByRole('button', { name: 'procurement', exact: true }).click();
 await page.waitForURL(url => url.searchParams.get('thread') === 'procurement');
-await page.getByText('I’m working on AI agents that reduce manual procurement work').waitFor();
+await page.getByText('I am building a system for agents to work across procurement documents and tools.').waitFor();
 
 await page.getByRole('button', { name: 'Browse all', exact: true }).click();
 await page.waitForURL(url => url.searchParams.get('browse') === 'all');

@@ -71,6 +71,17 @@
       "link": "Read note"
     },
     {
+      "id": "procurement-ai-in-progress",
+      "kind": "project",
+      "type": "In progress",
+      "date": "2026",
+      "classification": "Procurement agents",
+      "title": "Procurement AI, in progress",
+      "description": "A system I am building in-house to test AI agents on procurement work, showing the source evidence and stopping for human approval before important actions.",
+      "href": "https://cal.com/mducroisy",
+      "link": "Request a demo"
+    },
+    {
       "id": "thryveloop",
       "kind": "project",
       "type": "Project",
