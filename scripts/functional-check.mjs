@@ -2,6 +2,7 @@ import { chromium } from '/Users/maxducroisy/thryveloop/node_modules/playwright/
 
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+const procurementContactUrl = 'https://www.traduotech.com/contact?lead=max&topic=Procurement%20AI%20%26%20Agent%20Deployment';
 const errors = [];
 page.on('console', message => {
   if (message.type() === 'error') errors.push(message.text());
@@ -9,12 +10,18 @@ page.on('console', message => {
 page.on('pageerror', error => errors.push(error.message));
 
 await page.goto('http://127.0.0.1:4173', { waitUntil: 'networkidle' });
+if (await page.getByRole('link', { name: 'Book a conversation', exact: true }).getAttribute('href') !== procurementContactUrl) {
+  throw new Error('Header booking link does not use the TraDuotech contact route');
+}
 await page.getByRole('tab', { name: 'Writing' }).click();
 await page.waitForURL(url => url.searchParams.get('view') === 'writing');
 await page.goBack();
 await page.getByRole('button', { name: 'procurement', exact: true }).click();
 await page.waitForURL(url => url.searchParams.get('thread') === 'procurement');
 await page.getByText('I am building a system for agents to work across procurement documents and tools.').waitFor();
+if (await page.getByRole('link', { name: /Request a demo/ }).getAttribute('href') !== procurementContactUrl) {
+  throw new Error('Procurement demo link does not use the TraDuotech contact route');
+}
 
 await page.getByRole('button', { name: 'Browse all', exact: true }).click();
 await page.waitForURL(url => url.searchParams.get('browse') === 'all');
